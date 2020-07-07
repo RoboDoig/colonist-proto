@@ -3,14 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Test : MonoBehaviour
-{
-    public List<Stuff> stuff;
-
-}
-
 [Serializable]
-public class Stuff {
-    public WorldItem worldItem;
+public class WorldItem
+{
+    public WorldItemDefinition item;
     public float amount;
 }
