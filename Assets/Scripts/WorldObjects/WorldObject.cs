@@ -8,10 +8,9 @@ public class WorldObject : MonoBehaviour
 
     public List<WorldItem> preconditions;
     public List<WorldItem> effects;
-    public List<Action> actions;
+    public List<Action> actions = new List<Action>();
 
-    void Start() {
-        actions = new List<Action>();
-        actions.Add(new Action("World Object Action", new List<WorldItem>(preconditions), new List<WorldItem>(effects), this));
+    protected virtual void Start() {
+
     }
 }

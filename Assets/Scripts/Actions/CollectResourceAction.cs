@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectResourceAction : MonoBehaviour
+public class CollectResourceAction : Action
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public CollectResourceAction(string _description, List<WorldItem> _preconditions, List<WorldItem> _effects, WorldObject _parentObject) 
+    : base(_description, _preconditions, _effects, _parentObject) {
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
