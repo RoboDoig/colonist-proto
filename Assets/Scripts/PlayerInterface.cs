@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class PlayerInterface : MonoBehaviour
 {
+    // Camera
     public Camera playerCamera;
     public float moveSpeed = 5f;
 
-    private AgentInterface currentSelectedAgent;
+    // UI
+    public UIManager UIManager;
+
+    private Agent currentSelectedAgent;
 
     // Start is called before the first frame update
     void Start()
@@ -26,14 +30,16 @@ public class PlayerInterface : MonoBehaviour
             if (Physics.Raycast(ray, out hit)) {
 
                 // If we select an agent
-                if (hit.transform.GetComponent<AgentInterface>()) {
+                if (hit.transform.GetComponent<Agent>()) {
                     if (currentSelectedAgent)   
                         currentSelectedAgent.Deselect();                
-                    currentSelectedAgent = hit.transform.GetComponent<AgentInterface>();
+                    currentSelectedAgent = hit.transform.GetComponent<Agent>();
                     currentSelectedAgent.Select();
+                    UIManager.UpdateActionScrollView(currentSelectedAgent);
                 }
             }
         }
     }
     
+
 }

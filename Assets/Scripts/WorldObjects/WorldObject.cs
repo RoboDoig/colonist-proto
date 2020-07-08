@@ -12,6 +12,6 @@ public class WorldObject : MonoBehaviour
 
     void Start() {
         actions = new List<Action>();
-        actions.Add(new Action(new List<WorldItem>(preconditions), new List<WorldItem>(effects)));
+        actions.Add(new Action("World Object Action", new List<WorldItem>(preconditions), new List<WorldItem>(effects), this));
     }
 }
