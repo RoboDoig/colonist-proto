@@ -10,7 +10,7 @@ public class Action
     public bool inUse = false;
     // List of preconditions
     public List<WorldItem> preconditions;
-    // List of effects
+    // List of effectss
     public List<WorldItem> effects;
     public WorldObject parentObject;
 
@@ -37,19 +37,24 @@ public class Action
     }
 
     // Tells a given agent how to perform this action
-    public bool PerformAction(Agent agent) {
+    public virtual bool PerformAction(Agent agent) {
         agent.SetDestination(parentObject.transform.position);
         if ((agent.transform.position - parentObject.transform.position).magnitude < agent.reachDistance) {
-            ActionComplete();
+            ActionComplete(agent);
             return true;
         }
 
         return false;
     }
 
-    public void ActionComplete() {
-        Debug.Log("action complete!");
+    // When an action completes
+    public virtual void ActionComplete(Agent agent) {
+        Debug.Log("Action Complete");
         availableActions.Remove(this);
         parentObject.actions.Remove(this);
+    }
+
+    public void Remove() {
+        availableActions.Remove(this);
     }
 }

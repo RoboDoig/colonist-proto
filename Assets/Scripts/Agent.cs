@@ -13,7 +13,7 @@ public class Agent : MonoBehaviour
     public float reachDistance = 1f;  
 
     private NavMeshAgent navMeshAgent;
-    private List<WorldItem> inventory;
+    private List<WorldItem> inventory = new List<WorldItem>();
     private List<Action> actionQueue;
     private Action currentAction;
 
@@ -45,7 +45,7 @@ public class Agent : MonoBehaviour
         GetComponent<MeshRenderer>().material = deselectMaterial;
     }
 
-    // Returns a list of actions that are doable by this player
+    // Returns a list of actions that are doable by this agent
     public List<Action> AvailableActions() {
         List<Action> availableActions = new List<Action>();
 
@@ -58,12 +58,19 @@ public class Agent : MonoBehaviour
         return availableActions;
     }
 
+    // Adds an action to the queue of actions to be done
     public void AddActionToQueue(Action action) {
         actionQueue.Add(action);
         action.Reserve(this);
     }
 
+    // Sets the agent's destination
     public void SetDestination(Vector3 target) {
         navMeshAgent.SetDestination(target);
+    }
+
+    // Give an item to this agent
+    public void GiveItem(WorldItem item) {
+        inventory.Add(item);
     }
 }
