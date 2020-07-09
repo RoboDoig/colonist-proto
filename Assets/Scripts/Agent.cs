@@ -13,13 +13,14 @@ public class Agent : MonoBehaviour
     public float reachDistance = 1f;  
 
     private NavMeshAgent navMeshAgent;
-    private List<WorldItem> inventory = new List<WorldItem>();
+    private Inventory inventory;
     private List<Action> actionQueue;
     private Action currentAction;
 
     void Start() {
         actionQueue = new List<Action>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        inventory = GetComponent<Inventory>();
     }
 
     void Update() {
@@ -71,6 +72,6 @@ public class Agent : MonoBehaviour
 
     // Give an item to this agent
     public void GiveItem(WorldItem item) {
-        inventory.Add(item);
+        inventory.AddItem(item);
     }
 }
