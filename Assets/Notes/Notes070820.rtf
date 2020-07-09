@@ -16,4 +16,13 @@ Solutions:\
 \
 3 Seems like neatest solution, but may still lead to case where object is deleted but agent is still trying to perform some action on it. Therefore maybe best solution is that on the top WorldObject class, it needs a destroy function that loops through any remaining actions and notifies agents that are using it. The agents then have to replan their GOAP from their current state.\
 \
-}
+- How to deal with object stacking and actions? Objects create actions in the world based on their type. E.g. a tree will make an action CollectResource that gives ~10 wood, or it could be 100 wood. When an agent is planning its plan for a job, it might only need 1 wood for a given task, but the action says 10 or 100. Do we just want agents to take the maximum amount? Maybe easiest is to give every ItemDefinition some maxStack amount, e.g. a tree with 100 wood creates 10x collect 10 wood actions. \
+\
+One idea for this game is that you can drop some job into the world, e.g. build a fence - and the agents will figure out how to do it based on their stats, abilities and goals. We want there sometimes to be simple paths for the agents to do a job, but sometimes they think up circuitous routes to the job which Is where the interesting part comes in. E.g.\
+Job: Build Fence (Reward 50 gold)\
+\
+Agent 1 (has crafting skill) : Buy Iron \'97> Craft Axe \'97> Chop required wood \'97> Build fence\
+Agent 2 (high sneak skill) : Steal axe \'97> Chop wood \'97> Build fence\
+Agent 3 : Go hunting \'97> Sell skins \'97> etc.\
+\
+Would also like agents to be able to create their own jobs and structures. E.g. if an agent wants to drink but there is not pub, there should be some way that the agent can be motivated to build a pub themselves, or get someone else to do it. How do we implement that? Actions are represented by direct preconditions and effects, so for a character that wants to drink the build pub action should have a direct effect +drink. Or maybe it should just be that if a character wants to drink and can\'92t find a satisfactory plan to get drink, there is a different subsystem that tries to figure out actions that would create the potential to be able to get a drink? I.e. every ItemDefinition (wood, stone, drink, food) has a shadow definition (woodPotential, stonePotential, drinkPotential etc.) that agents default to if their plan fails.}
