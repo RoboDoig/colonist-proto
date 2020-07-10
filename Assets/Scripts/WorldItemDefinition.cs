@@ -7,4 +7,6 @@ using System;
 public class WorldItemDefinition : ScriptableObject
 {
     public string type;
+
+    public int maxStack;
 }

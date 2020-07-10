@@ -6,11 +6,16 @@ using System;
 [Serializable]
 public class WorldItem
 {
-    public WorldItemDefinition item;
-    public float amount;
+    public WorldItemDefinition itemDefinition;
+    public int amount;
+
+    public WorldItem(WorldItemDefinition _itemDefinition, int _amount) {
+        itemDefinition = _itemDefinition;
+        amount = _amount;
+    }
 
     public string Description() {
-        string descriptorString = amount + " " + item.type;
+        string descriptorString = amount + " " + itemDefinition.type;
 
         return descriptorString;
     }

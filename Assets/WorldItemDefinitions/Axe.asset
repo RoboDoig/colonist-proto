@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Axe
   m_EditorClassIdentifier: 
   type: Axe
+  maxStack: 1

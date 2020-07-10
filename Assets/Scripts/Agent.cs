@@ -13,7 +13,7 @@ public class Agent : MonoBehaviour
     public float reachDistance = 1f;  
 
     private NavMeshAgent navMeshAgent;
-    private Inventory inventory;
+    public Inventory inventory;
     private List<Action> actionQueue;
     private Action currentAction;
 
@@ -68,10 +68,5 @@ public class Agent : MonoBehaviour
     // Sets the agent's destination
     public void SetDestination(Vector3 target) {
         navMeshAgent.SetDestination(target);
-    }
-
-    // Give an item to this agent
-    public void GiveItem(WorldItem item) {
-        inventory.AddItem(item);
     }
 }

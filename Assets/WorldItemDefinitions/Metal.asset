@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Metal
   m_EditorClassIdentifier: 
   type: Metal
+  maxStack: 10
