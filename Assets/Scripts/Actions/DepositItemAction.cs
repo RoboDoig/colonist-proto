@@ -12,8 +12,6 @@ public class DepositItemAction : Action
     public override void ActionComplete(Agent agent) {
         base.ActionComplete(agent);
 
-        foreach(WorldItem effect in effects) {
-            agent.inventory.AddItem(effect);
-        }
+        
     }
 }

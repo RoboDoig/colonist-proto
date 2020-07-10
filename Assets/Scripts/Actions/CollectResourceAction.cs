@@ -10,12 +10,18 @@ public class CollectResourceAction : Action
 
     }
 
+    public override bool PerformAction(Agent agent) {
+        agent.SetDestination(parentObject.transform.position);
+        if ((agent.transform.position - parentObject.transform.position).magnitude < agent.reachDistance) {
+            ActionComplete(agent);
+            return true;
+        }
+
+        return false;
+    }
+
     public override void ActionComplete(Agent agent) {
         base.ActionComplete(agent);
-        foreach(WorldItem effect in effects) {
-            agent.inventory.AddItem(effect);
-            Debug.Log("Agent got " + effect.Description());
-        }
 
         // Temporary? Once the action is completed it just gets added again
         parentObject.actions.Add(new CollectResourceAction(this.description, this.preconditions, this.effects, this.parentObject));

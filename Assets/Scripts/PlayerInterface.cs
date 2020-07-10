@@ -35,6 +35,7 @@ public class PlayerInterface : MonoBehaviour
                         currentSelectedAgent.Deselect();                
                     currentSelectedAgent = hit.transform.GetComponent<Agent>();
                     currentSelectedAgent.Select();
+                    currentSelectedAgent.onActionComplete.AddListener(() => UIManager.UpdateActionScrollView(currentSelectedAgent));
                     UIManager.UpdateActionScrollView(currentSelectedAgent);
                 }
             }

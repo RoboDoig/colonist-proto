@@ -25,9 +25,18 @@ public class Action
 
     // Checks if a given agent can perform this action
     public bool CheckProcedural(Agent agent) {
+        // Check action is not in use (reserved)
         if (inUse) {
             return false;
         }
+
+        // Check agent has required preconditions
+        foreach (WorldItem precondition in preconditions) {
+            if (!agent.inventory.HasItem(precondition)) {
+                return false;
+            }
+        }
+
         return true;
     }
 
@@ -49,9 +58,12 @@ public class Action
 
     // When an action completes
     public virtual void ActionComplete(Agent agent) {
-        Debug.Log("Action Complete");
         availableActions.Remove(this);
         parentObject.actions.Remove(this);
+
+        foreach(WorldItem effect in effects) {
+            agent.inventory.AddItem(effect);
+        }
     }
 
     public void Remove() {

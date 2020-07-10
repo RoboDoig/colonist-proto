@@ -12,6 +12,6 @@ public class WorldObject : MonoBehaviour
 
     protected virtual void Start() {
         // Actions that every world object should have
-        actions.Add(new Action("Guard: " + objectName, new List<WorldItem>(), new List<WorldItem>(), this));
+        actions.Add(new GuardAction("Guard: " + objectName, new List<WorldItem>(), new List<WorldItem>(), this));
     }
 }

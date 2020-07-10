@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.AI;
 
 public class Agent : MonoBehaviour
@@ -16,6 +17,9 @@ public class Agent : MonoBehaviour
     public Inventory inventory;
     private List<Action> actionQueue;
     private Action currentAction;
+
+    // Events
+    public UnityEvent onActionComplete;
 
     void Start() {
         actionQueue = new List<Action>();
@@ -34,6 +38,9 @@ public class Agent : MonoBehaviour
             if (currentAction.PerformAction(this)) {
                 actionQueue.Remove(currentAction);
                 currentAction = null;
+
+                // Fire an action complete event
+                onActionComplete.Invoke();
             }
         }
     }
@@ -46,7 +53,7 @@ public class Agent : MonoBehaviour
         GetComponent<MeshRenderer>().material = deselectMaterial;
     }
 
-    // Returns a list of actions that are doable by this agent
+    // Returns a list of actions that are doable by this agent in its current state
     public List<Action> AvailableActions() {
         List<Action> availableActions = new List<Action>();
 
