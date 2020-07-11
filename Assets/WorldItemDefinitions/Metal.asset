@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Metal
   m_EditorClassIdentifier: 
   type: Metal
+  icon: {fileID: 6434297881002808141, guid: d03ec86ddbe2f4c01b818b700bcbe937, type: 3}
   maxStack: 10
