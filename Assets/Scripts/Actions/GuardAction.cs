@@ -9,6 +9,19 @@ public class GuardAction : Action
 
     }
 
+    public override bool PerformAction(Agent agent) {
+        agent.SetDestination(parentObject.transform.position);
+
+        if ((agent.transform.position - parentObject.transform.position).magnitude < agent.reachDistance) {
+            if (agent.UpdateWorkTimer() >= 10f) {
+                ActionComplete(agent);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public override void ActionComplete(Agent agent) {
         base.ActionComplete(agent);
 

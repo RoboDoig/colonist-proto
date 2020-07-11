@@ -31,8 +31,11 @@ public class PlayerInterface : MonoBehaviour
 
                 // If we select an agent
                 if (hit.transform.GetComponent<Agent>()) {
-                    if (currentSelectedAgent)   
-                        currentSelectedAgent.Deselect();                
+                    if (currentSelectedAgent)   {
+                        currentSelectedAgent.Deselect();
+                        currentSelectedAgent.onActionComplete.RemoveAllListeners();    
+                    }
+            
                     currentSelectedAgent = hit.transform.GetComponent<Agent>();
                     currentSelectedAgent.Select();
                     currentSelectedAgent.onActionComplete.AddListener(() => UIManager.UpdateActionScrollView(currentSelectedAgent));

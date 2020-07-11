@@ -17,6 +17,7 @@ public class Agent : MonoBehaviour
     public Inventory inventory;
     private List<Action> actionQueue;
     private Action currentAction;
+    private float workTimer = 0f;
 
     // Events
     public UnityEvent onActionComplete;
@@ -34,13 +35,8 @@ public class Agent : MonoBehaviour
         }
 
         if (currentAction != null) {
-            // If action completes this update loop, remove it from the queue
             if (currentAction.PerformAction(this)) {
-                actionQueue.Remove(currentAction);
-                currentAction = null;
-
-                // Fire an action complete event
-                onActionComplete.Invoke();
+                ActionComplete();
             }
         }
     }
@@ -70,6 +66,20 @@ public class Agent : MonoBehaviour
     public void AddActionToQueue(Action action) {
         actionQueue.Add(action);
         action.Reserve(this);
+    }
+
+    public void ActionComplete() {
+        actionQueue.Remove(currentAction);
+        currentAction = null;
+        workTimer = 0f;
+
+        // Fire an action complete event
+        onActionComplete.Invoke();
+    }
+
+    public float UpdateWorkTimer() {
+        workTimer += Time.deltaTime;
+        return workTimer;
     }
 
     // Sets the agent's destination
