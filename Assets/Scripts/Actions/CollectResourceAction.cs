@@ -10,14 +10,8 @@ public class CollectResourceAction : Action
 
     }
 
-    public override bool PerformAction(Agent agent) {
-        agent.SetDestination(parentObject.transform.position);
-        if ((agent.transform.position - parentObject.transform.position).magnitude < agent.reachDistance) {
-            ActionComplete(agent);
-            return true;
-        }
-
-        return false;
+    public override void PerformAction(Agent agent) {
+        base.PerformAction(agent);
     }
 
     public override void ActionComplete(Agent agent) {

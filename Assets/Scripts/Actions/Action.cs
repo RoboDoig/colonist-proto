@@ -14,6 +14,7 @@ public class Action
     // List of effectss
     public List<WorldItem> effects;
     public WorldObject parentObject;
+    public bool isComplete {get; protected set;}
 
     public Action(string _description, List<WorldItem> _preconditions, List<WorldItem> _effects, WorldObject _parentObject) {
         description = _description;
@@ -22,6 +23,7 @@ public class Action
         parentObject = _parentObject;
 
         availableActions.Add(this);
+        isComplete = false;
     }
 
     // Checks if a given agent can perform this action
@@ -47,14 +49,12 @@ public class Action
     }
 
     // Tells a given agent how to perform this action
-    public virtual bool PerformAction(Agent agent) {
+    public virtual void PerformAction(Agent agent) {
         agent.SetDestination(parentObject.transform.position);
-        if ((agent.transform.position - parentObject.transform.position).magnitude < agent.reachDistance) {
-            ActionComplete(agent);
-            return true;
-        }
 
-        return false;
+        if ((agent.transform.position - parentObject.transform.position).magnitude < agent.reachDistance) {
+            isComplete = true;
+        }
     }
 
     // When an action completes

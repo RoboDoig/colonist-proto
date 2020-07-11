@@ -17,7 +17,7 @@ public class Agent : MonoBehaviour
     public Inventory inventory;
     private List<Action> actionQueue;
     private Action currentAction;
-    private float workTimer = 0f;
+    public float workTimer {get; private set;}
 
     // Events
     public UnityEvent onActionComplete;
@@ -26,6 +26,7 @@ public class Agent : MonoBehaviour
         actionQueue = new List<Action>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         inventory = GetComponent<Inventory>();
+        workTimer = 0f;
     }
 
     void Update() {
@@ -35,8 +36,9 @@ public class Agent : MonoBehaviour
         }
 
         if (currentAction != null) {
-            if (currentAction.PerformAction(this)) {
-                ActionComplete();
+            currentAction.PerformAction(this);
+            if (currentAction.isComplete) {
+                ActionComplete(currentAction);
             }
         }
     }
@@ -68,7 +70,9 @@ public class Agent : MonoBehaviour
         action.Reserve(this);
     }
 
-    public void ActionComplete() {
+    public void ActionComplete(Action action) {
+        action.ActionComplete(this);
+
         actionQueue.Remove(currentAction);
         currentAction = null;
         workTimer = 0f;
