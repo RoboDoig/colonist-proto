@@ -38,8 +38,13 @@ public class PlayerInterface : MonoBehaviour
             
                     currentSelectedAgent = hit.transform.GetComponent<Agent>();
                     currentSelectedAgent.Select();
+
+                    // Update UI Hooks and view
                     currentSelectedAgent.onActionComplete.AddListener(() => UIManager.UpdateActionScrollView(currentSelectedAgent));
+                    currentSelectedAgent.onActionComplete.AddListener(() => UIManager.UpdateInventoryScrollView(currentSelectedAgent));
+
                     UIManager.UpdateActionScrollView(currentSelectedAgent);
+                    UIManager.UpdateInventoryScrollView(currentSelectedAgent);
                 }
             }
         }

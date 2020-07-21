@@ -43,4 +43,8 @@ public class Inventory : MonoBehaviour
     public void Transfer(WorldItem item, Inventory toInventory) {
 
     }
+
+    public List<WorldItem> GetItems() {
+        return new List<WorldItem>(inventoryItems);
+    }
 }
