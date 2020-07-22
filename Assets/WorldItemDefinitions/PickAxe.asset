@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: PickAxe
   icon: {fileID: -7226552096444442829, guid: d03ec86ddbe2f4c01b818b700bcbe937, type: 3}
+  baseType: 1
   maxStack: 1

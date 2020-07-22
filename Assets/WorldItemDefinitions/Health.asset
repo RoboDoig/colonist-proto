@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a349e9a64b578459484f1c78796abe4b, type: 3}
-  m_Name: Axe
+  m_Name: Health
   m_EditorClassIdentifier: 
-  type: Axe
-  icon: {fileID: -2715250291835184389, guid: d03ec86ddbe2f4c01b818b700bcbe937, type: 3}
-  baseType: 1
-  maxStack: 1
+  type: Health
+  icon: {fileID: -358945157454639822, guid: d03ec86ddbe2f4c01b818b700bcbe937, type: 3}
+  baseType: 2
+  maxStack: 100

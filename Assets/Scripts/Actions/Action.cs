@@ -7,8 +7,11 @@ public class Action
 {
     public static List<Action> availableActions = new List<Action>();
     public string description;
-
+    public enum ActionType {Global, AgentOnly, OtherAgentOnly}
+    public ActionType actionType;
     public bool inUse = false;
+    // for future use, if action deleted need to tell agent that has reserved it
+    public Agent agentUsing = null;
     // List of preconditions
     public List<WorldItem> preconditions;
     // List of effectss
@@ -21,6 +24,7 @@ public class Action
         preconditions = _preconditions;
         effects = _effects;
         parentObject = _parentObject;
+        actionType = ActionType.Global;
 
         availableActions.Add(this);
         isComplete = false;

@@ -15,6 +15,7 @@ public class Agent : MonoBehaviour
 
     private NavMeshAgent navMeshAgent;
     public Inventory inventory;
+    public Stats stats;
     private List<Action> actionQueue;
     private Action currentAction;
     public float workTimer {get; private set;}
@@ -26,6 +27,7 @@ public class Agent : MonoBehaviour
         actionQueue = new List<Action>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         inventory = GetComponent<Inventory>();
+        stats = GetComponent<Stats>();
         workTimer = 0f;
     }
 
@@ -89,5 +91,10 @@ public class Agent : MonoBehaviour
     // Sets the agent's destination
     public void SetDestination(Vector3 target) {
         navMeshAgent.SetDestination(target);
+    }
+
+    // Get the agent's current WorldItem state (inventory + stats)
+    public List<WorldItem> GetState() {
+        return new List<WorldItem>();
     }
 }

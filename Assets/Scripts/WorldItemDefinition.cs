@@ -8,6 +8,7 @@ public class WorldItemDefinition : ScriptableObject
 {
     public string type;
     public Sprite icon;
-
+    public enum BaseType {Resource, Tool, Stat}
+    public BaseType baseType;
     public int maxStack;
 }

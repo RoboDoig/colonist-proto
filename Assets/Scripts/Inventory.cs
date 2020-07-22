@@ -16,7 +16,7 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        inventoryItems.Add(new WorldItem(item.itemDefinition, 1));
+        inventoryItems.Add(new WorldItem(item.itemDefinition, item.amount));
     }
 
     public void RemoveItem(WorldItem item) {
