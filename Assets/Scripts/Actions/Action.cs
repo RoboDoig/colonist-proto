@@ -24,8 +24,8 @@ public class Action
         preconditions = _preconditions;
         effects = _effects;
         parentObject = _parentObject;
-        actionType = ActionType.Global;
 
+        actionType = ActionType.Global;
         availableActions.Add(this);
         isComplete = false;
     }

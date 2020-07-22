@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectResourceAction : Action
+public class EatAction : Action
 {
-    public CollectResourceAction(string _description, List<WorldItem> _preconditions, List<WorldItem> _effects, WorldObject _parentObject) 
+    public EatAction(string _description, List<WorldItem> _preconditions, List<WorldItem> _effects, WorldObject _parentObject) 
     : base(_description, _preconditions, _effects, _parentObject) {
-
+        actionType = ActionType.AgentOnly;
     }
 
     public override void PerformAction(Agent agent) {

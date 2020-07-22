@@ -19,6 +19,7 @@ public class Agent : MonoBehaviour
     private List<Action> actionQueue;
     private Action currentAction;
     public float workTimer {get; private set;}
+    private List<Action> agentActions = new List<Action>();
 
     // Events
     public UnityEvent onActionComplete;
@@ -29,6 +30,8 @@ public class Agent : MonoBehaviour
         inventory = GetComponent<Inventory>();
         stats = GetComponent<Stats>();
         workTimer = 0f;
+
+        // add personal actions
     }
 
     void Update() {
