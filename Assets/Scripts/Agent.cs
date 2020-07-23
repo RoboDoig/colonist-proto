@@ -20,6 +20,7 @@ public class Agent : MonoBehaviour
     private Action currentAction;
     public float workTimer {get; private set;}
     private List<Action> agentActions = new List<Action>();
+    private WorldItemDefinitions worldItemDefinitions;
 
     // Events
     public UnityEvent onActionComplete;
@@ -31,7 +32,11 @@ public class Agent : MonoBehaviour
         stats = GetComponent<Stats>();
         workTimer = 0f;
 
-        // add personal actions
+        worldItemDefinitions = GameObject.FindGameObjectWithTag("ItemDefinitions").GetComponent<WorldItemDefinitions>();
+
+        // add personal actions - actually what we need to do, every time agent's state is changed, loop through all its defined actions, add action for each relevant state item
+        List<WorldItem> preconditions = new List<WorldItem>(new WorldItem[] {new WorldItem(worldItemDefinitions.Food, 1)});
+        agentActions.Add(new EatAction("Eat: ", preconditions, new List<WorldItem>(), null));
     }
 
     void Update() {
