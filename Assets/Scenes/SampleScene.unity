@@ -2439,9 +2439,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1568544482}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a6b4ccb893a2476eb3b8437bd83780f, type: 3}
+  m_Script: {fileID: 11500000, guid: 102a1f7e15f9842d8b527924749a1cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eatPreconditions:
+  - itemDefinition: {fileID: 11400000, guid: 86813e840d82d4d158198bf0489eba16, type: 2}
+    amount: 1
+  eatEffects:
+  - itemDefinition: {fileID: 11400000, guid: 3b0f425ab584b44f99783f1e30bbcee1, type: 2}
+    amount: -1
 --- !u!1 &1569395006
 GameObject:
   m_ObjectHideFlags: 0
@@ -2871,6 +2877,33 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2176806838984629108, guid: 2c36777033092496f8f2386802969811,
+        type: 3}
+      propertyPath: startItems.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2176806838984629108, guid: 2c36777033092496f8f2386802969811,
+        type: 3}
+      propertyPath: startItems.Array.data[0].itemDefinition
+      value: 
+      objectReference: {fileID: 11400000, guid: 2a43f26e68bc44db28f5546496279566,
+        type: 2}
+    - target: {fileID: 2176806838984629108, guid: 2c36777033092496f8f2386802969811,
+        type: 3}
+      propertyPath: startItems.Array.data[0].amount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2176806838984629108, guid: 2c36777033092496f8f2386802969811,
+        type: 3}
+      propertyPath: startItems.Array.data[1].itemDefinition
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b0f425ab584b44f99783f1e30bbcee1,
+        type: 2}
+    - target: {fileID: 2176806838984629108, guid: 2c36777033092496f8f2386802969811,
+        type: 3}
+      propertyPath: startItems.Array.data[1].amount
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c36777033092496f8f2386802969811, type: 3}

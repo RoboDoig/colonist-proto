@@ -15,7 +15,6 @@ public class Agent : MonoBehaviour
 
     private NavMeshAgent navMeshAgent;
     public Inventory inventory;
-    public Stats stats;
     private List<Action> actionQueue;
     private Action currentAction;
     public float workTimer {get; private set;}
@@ -29,14 +28,13 @@ public class Agent : MonoBehaviour
         actionQueue = new List<Action>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         inventory = GetComponent<Inventory>();
-        stats = GetComponent<Stats>();
         workTimer = 0f;
 
         worldItemDefinitions = GameObject.FindGameObjectWithTag("ItemDefinitions").GetComponent<WorldItemDefinitions>();
 
         // add personal actions - actually what we need to do, every time agent's state is changed, loop through all its defined actions, add action for each relevant state item
-        List<WorldItem> preconditions = new List<WorldItem>(new WorldItem[] {new WorldItem(worldItemDefinitions.Food, 1)});
-        agentActions.Add(new EatAction("Eat: ", preconditions, new List<WorldItem>(), null));
+        // List<WorldItem> preconditions = new List<WorldItem>(new WorldItem[] {new WorldItem(worldItemDefinitions.Food, 1)});
+        // agentActions.Add(new EatAction("Eat: ", preconditions, new List<WorldItem>(), null));
     }
 
     void Update() {

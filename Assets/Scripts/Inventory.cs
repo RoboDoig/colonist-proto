@@ -5,6 +5,13 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     private List<WorldItem> inventoryItems = new List<WorldItem>();
+    public List<WorldItem> startItems;
+
+    void Start() {
+        foreach(WorldItem item in startItems) {
+            AddItem(item);
+        }
+    }
 
     public void AddItem(WorldItem item) {
         // Check ItemDefinition type is in inventory, if it is add to the amount
