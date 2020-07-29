@@ -18,6 +18,7 @@ public class Action
     public List<WorldItem> effects;
     public WorldObject parentObject;
     public bool isComplete {get; protected set;}
+    public bool repeatable = false;
 
     public Action(string _description, List<WorldItem> _preconditions, List<WorldItem> _effects, WorldObject _parentObject) {
         description = _description;
@@ -37,6 +38,20 @@ public class Action
             return false;
         }
 
+        // If this is an agent only action, check the action is attached to the agent
+        if (actionType == ActionType.AgentOnly) {
+            if (parentObject != agent.worldAgent) {
+                return false;
+            }
+        }
+
+        // If this is is an other agent only action, check the action is attached to a different afent
+        if (actionType == ActionType.OtherAgentOnly) {
+            if (parentObject == agent.worldAgent) {
+                return false;
+            }
+        }
+
         // Check agent has required preconditions
         foreach (WorldItem precondition in preconditions) {
             if (!agent.inventory.HasItem(precondition)) {
@@ -52,6 +67,10 @@ public class Action
         inUse = true;
     }
 
+    public void DeReserve(Agent agent) {
+        inUse = false;
+    }
+
     // Tells a given agent how to perform this action
     public virtual void PerformAction(Agent agent) {
         agent.SetDestination(parentObject.transform.position);
@@ -63,11 +82,25 @@ public class Action
 
     // When an action completes
     public virtual void ActionComplete(Agent agent) {
-        availableActions.Remove(this);
-        parentObject.actions.Remove(this);
+        DeReserve(agent);
 
+        // if action is not repeatable (e.g. eating) then it needs to be removed from the available actions list
+        if (!repeatable) {
+            availableActions.Remove(this);
+            parentObject.actions.Remove(this);
+        }
+
+        // remove preconditions from the acting agent
+        foreach(WorldItem precondition in preconditions) {
+            if (precondition.itemDefinition.consumable) {
+                agent.inventory.RemoveItem(precondition);
+            }
+        }
+
+        // add effects for the acting agent
         foreach(WorldItem effect in effects) {
             agent.inventory.AddItem(effect);
+            Debug.Log(effect.amount);
         }
     }
 

@@ -6,7 +6,7 @@ public class GuardAction : Action
 {
     public GuardAction(string _description, List<WorldItem> _preconditions, List<WorldItem> _effects, WorldObject _parentObject) 
     : base(_description, _preconditions, _effects, _parentObject) {
-
+        actionType = ActionType.OtherAgentOnly;
     }
 
     public override void PerformAction(Agent agent) {

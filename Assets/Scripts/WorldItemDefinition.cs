@@ -11,4 +11,5 @@ public class WorldItemDefinition : ScriptableObject
     public enum BaseType {Resource, Tool, Stat}
     public BaseType baseType;
     public int maxStack;
+    public bool consumable;
 }

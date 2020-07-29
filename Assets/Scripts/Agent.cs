@@ -18,8 +18,9 @@ public class Agent : MonoBehaviour
     private List<Action> actionQueue;
     private Action currentAction;
     public float workTimer {get; private set;}
-    private List<Action> agentActions = new List<Action>();
+    public List<Action> agentActions = new List<Action>();
     private WorldItemDefinitions worldItemDefinitions;
+    public WorldAgent worldAgent {get; private set;}
 
     // Events
     public UnityEvent onActionComplete;
@@ -28,6 +29,7 @@ public class Agent : MonoBehaviour
         actionQueue = new List<Action>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         inventory = GetComponent<Inventory>();
+        worldAgent = GetComponent<WorldAgent>();
         workTimer = 0f;
 
         worldItemDefinitions = GameObject.FindGameObjectWithTag("ItemDefinitions").GetComponent<WorldItemDefinitions>();

@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AgentActions : MonoBehaviour
+public class WorldAgent : WorldObject
 {
     [Header("Eat Action")]
     public List<WorldItem> eatPreconditions;
     public List<WorldItem> eatEffects;
 
-    void Start() {
-        Agent agent = GetComponent<Agent>();
-
+    protected override void Start() {
+        base.Start();
         string descriptionString = "Eat: " + eatPreconditions[0].Description();
-        agent.agentActions.Add(new EatAction(descriptionString, eatPreconditions, eatEffects, null));
+
+        actions.Add(new EatAction(descriptionString, new List<WorldItem>(eatPreconditions), new List<WorldItem>(eatEffects), this));
     }
 }
