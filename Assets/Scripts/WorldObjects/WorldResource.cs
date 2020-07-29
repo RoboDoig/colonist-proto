@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class WorldResource : WorldObject
 {
+
+    public List<WorldItem> preconditions;
+    public List<WorldItem> effects;
+
     protected override void Start() {
         base.Start();
         string descriptionString = "Collect Resource: " + effects[0].Description();

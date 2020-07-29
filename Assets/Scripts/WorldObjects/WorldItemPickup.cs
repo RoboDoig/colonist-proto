@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class WorldItemPickup : WorldObject
 {
+
+    public List<WorldItem> preconditions;
+    public List<WorldItem> effects;
+
     protected override void Start() {
         base.Start();
         string descriptionString = "Pick up: " + effects[0].Description();

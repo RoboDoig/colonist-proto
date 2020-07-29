@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class WorldDepositPoint : WorldObject
 {
-        protected override void Start() {
+
+    public List<WorldItem> preconditions;
+    public List<WorldItem> effects;
+
+    protected override void Start() {
         base.Start();
         string descriptionString = "Deposit: " + effects[0].Description();
 
