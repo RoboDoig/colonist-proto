@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Agent : MonoBehaviour
 {
@@ -25,8 +26,8 @@ public class Agent : MonoBehaviour
     // Events
     public UnityEvent onActionComplete;
 
-    // UI
-    
+    // UI - maybe should be moved to different component
+    private Slider workProgressBar;
 
     void Start() {
         actionQueue = new List<Action>();
@@ -37,12 +38,19 @@ public class Agent : MonoBehaviour
 
         worldItemDefinitions = GameObject.FindGameObjectWithTag("ItemDefinitions").GetComponent<WorldItemDefinitions>();
 
+        // UI, maybe should be moved to different component
+        workProgressBar = GetComponentInChildren<Slider>();
+        Debug.Log(workProgressBar);
+
         // add personal actions - actually what we need to do, every time agent's state is changed, loop through all its defined actions, add action for each relevant state item
         // List<WorldItem> preconditions = new List<WorldItem>(new WorldItem[] {new WorldItem(worldItemDefinitions.Food, 1)});
         // agentActions.Add(new EatAction("Eat: ", preconditions, new List<WorldItem>(), null));
     }
 
     void Update() {
+        // UI Update, maybe should be moved to different component
+        UpdateUI();
+
         // Check if we need to switch actions
         if (currentAction == null && actionQueue.Count > 0) {
             currentAction = actionQueue[0];
@@ -107,5 +115,14 @@ public class Agent : MonoBehaviour
     // Get the agent's current WorldItem state (inventory + stats)
     public List<WorldItem> GetState() {
         return new List<WorldItem>();
+    }
+
+    // maybe should be moved to separate component / event system
+    private void UpdateUI() {
+        if (currentAction != null) {
+            workProgressBar.value = workTimer / currentAction.baseWorkTime;
+        } else {
+            workProgressBar.value = 0f;
+        }
     }
 }
