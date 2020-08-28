@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Pretty sure this is OBSOLETE with WorldAgent, WorldAgent arch. is cleaner
 public class AgentActions : MonoBehaviour
 {
     [Header("Eat Action")]

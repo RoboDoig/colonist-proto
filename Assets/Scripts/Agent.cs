@@ -25,6 +25,9 @@ public class Agent : MonoBehaviour
     // Events
     public UnityEvent onActionComplete;
 
+    // UI
+    
+
     void Start() {
         actionQueue = new List<Action>();
         navMeshAgent = GetComponent<NavMeshAgent>();
