@@ -7,18 +7,7 @@ public class GuardAction : Action
     public GuardAction(string _description, List<WorldItem> _preconditions, List<WorldItem> _effects, WorldObject _parentObject) 
     : base(_description, _preconditions, _effects, _parentObject) {
         actionType = ActionType.OtherAgentOnly;
-    }
-
-    public override void PerformAction(Agent agent) {
-        base.PerformAction(agent);
-
-        if ((agent.transform.position - parentObject.transform.position).magnitude < agent.reachDistance) {
-            agent.UpdateWorkTimer();
-        }
-
-        if (agent.workTimer < 10f) {
-            isComplete = false;
-        }
+        baseWorkTime = 5f;
     }
 
     public override void ActionComplete(Agent agent) {

@@ -17,6 +17,7 @@ public class Action
     // List of effectss
     public List<WorldItem> effects;
     public WorldObject parentObject;
+    public float baseWorkTime {get; protected set;}
     public bool isComplete {get; protected set;}
     public bool repeatable = false;
 
@@ -29,6 +30,7 @@ public class Action
         actionType = ActionType.Global;
         availableActions.Add(this);
         isComplete = false;
+        baseWorkTime = 1f;
     }
 
     // Checks if a given agent can perform this action
@@ -75,8 +77,15 @@ public class Action
     public virtual void PerformAction(Agent agent) {
         agent.SetDestination(parentObject.transform.position);
 
+        // if the agent is within reach distance of the parent object
         if ((agent.transform.position - parentObject.transform.position).magnitude < agent.reachDistance) {
-            isComplete = true;
+            // update the agent work timer
+            agent.UpdateWorkTimer();
+
+            // if the agent has been at the object for sufficient time, we can say the action is complete
+            if (agent.workTimer > baseWorkTime) {
+                isComplete = true;
+            }
         }
     }
 
