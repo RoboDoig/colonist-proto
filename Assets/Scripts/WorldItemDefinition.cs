@@ -12,4 +12,7 @@ public class WorldItemDefinition : ScriptableObject
     public BaseType baseType;
     public int maxStack;
     public bool consumable;
+
+    // What personal actions can an agent do with this item?
+    public List<ActionObject> agentActions;
 }

@@ -17,3 +17,5 @@ MonoBehaviour:
   baseType: 0
   maxStack: 10
   consumable: 1
+  agentActions:
+  - {fileID: 7981736601858908682, guid: 29c17cba5c7699b43beaf817f9cc31ad, type: 3}
