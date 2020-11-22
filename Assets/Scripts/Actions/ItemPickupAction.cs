@@ -16,6 +16,7 @@ public class ItemPickupAction : Action
     public override void ActionComplete(Agent agent) {
         base.ActionComplete(agent);
 
-        parentObject.DestroyThisObject();
+        if (parentObject.actions.Count <= parentObject.nDefaultActions)
+            parentObject.DestroyThisObject();
     }
 }

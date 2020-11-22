@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WorldItemPickup : WorldObject
 {
-
     public List<WorldItem> preconditions;
     public List<WorldItem> effects;
 
