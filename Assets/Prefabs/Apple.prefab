@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 785fa02704c32487b92098467bce231c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: Apple
+  objectName: Food
   preconditions: []
   effects:
   - itemDefinition: {fileID: 11400000, guid: 86813e840d82d4d158198bf0489eba16, type: 2}

@@ -12,6 +12,6 @@ public class WorldAgent : WorldObject
         base.Start();
         string descriptionString = "Eat: " + eatPreconditions[0].Description();
 
-        actions.Add(new EatAction(descriptionString, new List<WorldItem>(eatPreconditions), new List<WorldItem>(eatEffects), this));
+        // actions.Add(new EatAction(descriptionString, new List<WorldItem>(eatPreconditions), new List<WorldItem>(eatEffects), this));
     }
 }
