@@ -187,12 +187,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78240ba3f218f9643a437a47b2558440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: 
+  objectName: Chest
   preconditions: []
   items:
-  - itemDefinition: {fileID: 0}
-    amount: 0
-  - itemDefinition: {fileID: 0}
-    amount: 0
-  - itemDefinition: {fileID: 0}
-    amount: 0
+  - itemDefinition: {fileID: 11400000, guid: 4aeceee25b2e4434aba16c72f502c2e4, type: 2}
+    amount: 2
+  - itemDefinition: {fileID: 11400000, guid: e388e1217129749e9ab118629e2d4760, type: 2}
+    amount: 1
+  - itemDefinition: {fileID: 11400000, guid: 2d5bfb38fd23c4fdea08dced8654c660, type: 2}
+    amount: 3
