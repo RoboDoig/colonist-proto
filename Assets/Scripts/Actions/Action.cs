@@ -47,7 +47,7 @@ public class Action
             }
         }
 
-        // If this is is an other agent only action, check the action is attached to a different afent
+        // If this is is an other agent only action, check the action is attached to a different agent
         if (actionType == ActionType.OtherAgentOnly) {
             if (parentObject == agent.worldAgent) {
                 return false;

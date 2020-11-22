@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WorldResource : WorldObject
 {
-
+    [Header("Collect Resource Conditions/Effects")]
     public List<WorldItem> preconditions;
     public List<WorldItem> effects;
 
