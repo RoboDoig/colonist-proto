@@ -110,12 +110,10 @@ public class Action
         foreach(WorldItem effect in effects) {
             agent.inventory.AddItem(effect);
             
-            // if the world item has a definition with actions, add those too
-            for (int x = 0; x < effect.amount; x++) {
-                foreach (ActionObject actionObject in effect.itemDefinition.agentActions) {
-                    actionObject.GetAction(agent.worldAgent);
-                }
-            }
+            // if any of the effect items have associated actions, add those
+            // foreach (ActionObject actionObject in effect.itemDefinition.agentActions) {
+            //     actionObject.GetAction(effect, agent.worldAgent);
+            // }
         }
     }
 

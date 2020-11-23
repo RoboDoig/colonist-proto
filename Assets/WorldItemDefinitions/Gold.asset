@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2c3ebee7ccaf4e9790a3a06b8195d6a, type: 3}
-  m_Name: Wood
+  m_Name: Gold
   m_EditorClassIdentifier: 
-  type: Wood
-  icon: {fileID: -2640195610763654411, guid: d03ec86ddbe2f4c01b818b700bcbe937, type: 3}
+  type: Gold
+  icon: {fileID: -5690979520692100696, guid: d03ec86ddbe2f4c01b818b700bcbe937, type: 3}
   baseType: 0
-  maxStack: 10
+  maxStack: 100
   consumable: 1
+  agentUseEffects: []
+  agentActions:
+  - {fileID: 4565392985269257346, guid: 3bebf53049d053149aba19e7cb7c1555, type: 3}
