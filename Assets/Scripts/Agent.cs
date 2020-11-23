@@ -76,11 +76,11 @@ public class Agent : MonoBehaviour
     }
 
     public void Select() {
-        GetComponentInChildren<SkinnedMeshRenderer>().material = selectMaterial;
+        GetComponent<Outline>().OutlineWidth = 1f;
     }
 
     public void Deselect() {
-        GetComponentInChildren<SkinnedMeshRenderer>().material = deselectMaterial;
+        GetComponent<Outline>().OutlineWidth = 0f;
     }
 
     // Returns a list of actions that are doable by this agent in its current state
