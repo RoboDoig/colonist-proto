@@ -15,5 +15,12 @@ public class StealAction : Action
 
     public override void ActionComplete(Agent agent) {
         base.ActionComplete(agent);
+
+        // In steal, we need to remove the amount stolen from the victim
+        Inventory otherAgentInventory = parentObject.GetComponent<Inventory>();
+        foreach (WorldItem effect in effects) {
+            otherAgentInventory.GetComponent<Inventory>().RemoveItem(effect);
+        }
+
     }
 }

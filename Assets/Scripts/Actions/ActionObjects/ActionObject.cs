@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class ActionObject : MonoBehaviour
 {
-
-    public List<WorldItem> preconditions;
-    public List<WorldItem> effects;
-
-    public virtual Action GetAction(WorldObject _parentObject) {
-        return new Action("Action", preconditions, effects, _parentObject);
+    public virtual Action GetAction(WorldItem item, WorldObject _parentObject) {
+        return new Action("Action", new List<WorldItem>(), new List<WorldItem>(), _parentObject);
     }
 }

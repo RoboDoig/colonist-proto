@@ -17,5 +17,9 @@ MonoBehaviour:
   baseType: 0
   maxStack: 10
   consumable: 1
+  agentUseEffects:
+  - itemDefinition: {fileID: 11400000, guid: 3b0f425ab584b44f99783f1e30bbcee1, type: 2}
+    amount: -1
   agentActions:
   - {fileID: 7981736601858908682, guid: 29c17cba5c7699b43beaf817f9cc31ad, type: 3}
+  - {fileID: 4565392985269257346, guid: 3bebf53049d053149aba19e7cb7c1555, type: 3}
