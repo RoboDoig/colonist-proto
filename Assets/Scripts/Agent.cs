@@ -29,6 +29,10 @@ public class Agent : MonoBehaviour
     // UI - maybe should be moved to different component
     private Slider workProgressBar;
 
+    // Animation
+    Animator anim;
+    Vector3 lastPosition = Vector3.zero;
+
     void Start() {
         actionQueue = new List<Action>();
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -36,11 +40,13 @@ public class Agent : MonoBehaviour
         worldAgent = GetComponent<WorldAgent>();
         workTimer = 0f;
 
-        worldItemDefinitions = GameObject.FindGameObjectWithTag("ItemDefinitions").GetComponent<WorldItemDefinitions>();
+        //worldItemDefinitions = GameObject.FindGameObjectWithTag("ItemDefinitions").GetComponent<WorldItemDefinitions>();
 
         // UI, maybe should be moved to different component
         workProgressBar = GetComponentInChildren<Slider>();
-        Debug.Log(workProgressBar);
+
+        // Animation, maybe should be moved to a different component
+        anim = GetComponent<Animator>();
 
         // add personal actions - actually what we need to do, every time agent's state is changed, loop through all its defined actions, add action for each relevant state item
         // List<WorldItem> preconditions = new List<WorldItem>(new WorldItem[] {new WorldItem(worldItemDefinitions.Food, 1)});
@@ -62,14 +68,19 @@ public class Agent : MonoBehaviour
                 ActionComplete(currentAction);
             }
         }
+
+        // calculate speed and send speed to animator
+        float currentSpeed = (transform.position - lastPosition).magnitude / Time.deltaTime;
+        lastPosition = transform.position;
+        anim.SetFloat("moveSpeed", currentSpeed);
     }
 
     public void Select() {
-        GetComponent<MeshRenderer>().material = selectMaterial;
+        GetComponentInChildren<SkinnedMeshRenderer>().material = selectMaterial;
     }
 
     public void Deselect() {
-        GetComponent<MeshRenderer>().material = deselectMaterial;
+        GetComponentInChildren<SkinnedMeshRenderer>().material = deselectMaterial;
     }
 
     // Returns a list of actions that are doable by this agent in its current state
