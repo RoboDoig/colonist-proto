@@ -1010,6 +1010,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: agent
+  eatPreconditions:
+  - itemDefinition: {fileID: 11400000, guid: 86813e840d82d4d158198bf0489eba16, type: 2}
+    amount: 1
+  eatEffects:
+  - itemDefinition: {fileID: 11400000, guid: 3b0f425ab584b44f99783f1e30bbcee1, type: 2}
+    amount: -1
 --- !u!114 &7217536710721706258
 MonoBehaviour:
   m_ObjectHideFlags: 0

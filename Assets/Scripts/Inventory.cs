@@ -66,17 +66,17 @@ public class Inventory : MonoBehaviour
 
     // When an inventory item is modified (added, removed) we must remap its associated actions
     void UpdateItemActions(InventoryItem inventoryItem) {
-        foreach(Action action in inventoryItem.associatedActions) {
-            Action.availableActions.Remove(action);
-        }
+        // foreach(Action action in inventoryItem.associatedActions) {
+        //     Action.availableActions.Remove(action);
+        // }
 
-        inventoryItem.associatedActions.Clear();
+        // inventoryItem.associatedActions.Clear();
 
-        if (inventoryItem.worldItem.amount > 0) {
-            foreach (ActionObject actionObject in inventoryItem.worldItem.itemDefinition.agentActions) {
-                inventoryItem.associatedActions.Add(actionObject.GetAction(inventoryItem.worldItem, agent.worldAgent));
-            }
-        }
+        // if (inventoryItem.worldItem.amount > 0) {
+        //     foreach (ActionObject actionObject in inventoryItem.worldItem.itemDefinition.agentActions) {
+        //         inventoryItem.associatedActions.Add(actionObject.GetAction(inventoryItem.worldItem, agent.worldAgent));
+        //     }
+        // }
     }
 
     public void Transfer(WorldItem item, Inventory toInventory) {
