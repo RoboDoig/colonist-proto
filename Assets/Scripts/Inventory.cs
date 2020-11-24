@@ -19,11 +19,11 @@ public class Inventory : MonoBehaviour
     }
 
     void Start() {
+        agent = GetComponent<Agent>();
+
         foreach(WorldItem item in startItems) {
             AddItem(item);
         }
-
-        agent = GetComponent<Agent>();
     }
 
     public void AddItem(WorldItem item) {
@@ -66,17 +66,18 @@ public class Inventory : MonoBehaviour
 
     // When an inventory item is modified (added, removed) we must remap its associated actions
     void UpdateItemActions(InventoryItem inventoryItem) {
-        // foreach(Action action in inventoryItem.associatedActions) {
-        //     Action.availableActions.Remove(action);
-        // }
+        foreach(Action action in inventoryItem.associatedActions) {
+            Action.availableActions.Remove(action);
+        }
 
-        // inventoryItem.associatedActions.Clear();
+        inventoryItem.associatedActions.Clear();
 
-        // if (inventoryItem.worldItem.amount > 0) {
-        //     foreach (ActionObject actionObject in inventoryItem.worldItem.itemDefinition.agentActions) {
-        //         inventoryItem.associatedActions.Add(actionObject.GetAction(inventoryItem.worldItem, agent.worldAgent));
-        //     }
-        // }
+        if (inventoryItem.worldItem.amount > 0 && inventoryItem.worldItem.itemDefinition.baseType != WorldItemDefinition.BaseType.Building && inventoryItem.worldItem.itemDefinition.baseType != WorldItemDefinition.BaseType.Stat) {
+            // Add item steal
+            List<WorldItem> stealEffects = new List<WorldItem>();
+            stealEffects.Add(new WorldItem(inventoryItem.worldItem.itemDefinition, inventoryItem.worldItem.amount));
+            inventoryItem.associatedActions.Add(new StealAction("Steal :" + inventoryItem.worldItem.Description(), new List<WorldItem>(), stealEffects, agent.worldAgent));
+        }
     }
 
     public void Transfer(WorldItem item, Inventory toInventory) {
