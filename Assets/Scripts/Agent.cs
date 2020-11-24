@@ -136,4 +136,8 @@ public class Agent : MonoBehaviour
             workProgressBar.value = 0f;
         }
     }
+
+    public void CreateObject(GameObject gameObject, Vector3 position, Quaternion rotation) {
+        Instantiate(gameObject, position, rotation);
+    }
 }
