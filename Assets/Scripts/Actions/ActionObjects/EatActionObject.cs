@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EatActionObject : ActionObject
 {
-
     public override Action GetAction(WorldItem item, WorldObject _parentObject)
     {
         List<WorldItem> preconditions = new List<WorldItem>();
