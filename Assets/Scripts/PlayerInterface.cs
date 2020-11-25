@@ -43,7 +43,7 @@ public class PlayerInterface : MonoBehaviour
                     currentSelectedAgent.onActionComplete.AddListener(() => UIManager.UpdateActionScrollView(currentSelectedAgent));
                     currentSelectedAgent.onActionComplete.AddListener(() => UIManager.UpdateInventoryScrollView(currentSelectedAgent));
 
-                    UIManager.UpdateActionScrollView(currentSelectedAgent);
+                    // UIManager.UpdateActionScrollView(currentSelectedAgent);
                     UIManager.UpdateInventoryScrollView(currentSelectedAgent);
                 }
             }

@@ -43,7 +43,7 @@ public class UIManager : MonoBehaviour
             GameObject newItemDisplay = Instantiate(itemDisplay);
             newItemDisplay.transform.SetParent(inventoryScrollViewContents);
 
-            newItemDisplay.GetComponent<Image>().sprite = item.itemDefinition.icon;
+            newItemDisplay.GetComponentsInChildren<Image>()[1].sprite = item.itemDefinition.icon;
             newItemDisplay.GetComponentInChildren<Text>().text = item.amount.ToString();
         }
     }

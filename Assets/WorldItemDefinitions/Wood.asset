@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wood
   m_EditorClassIdentifier: 
   type: Wood
-  icon: {fileID: -2640195610763654411, guid: d03ec86ddbe2f4c01b818b700bcbe937, type: 3}
+  icon: {fileID: 21300000, guid: 827aa9d0c75ae884caa71456d3f54310, type: 3}
   baseType: 0
   maxStack: 10
   consumable: 1
